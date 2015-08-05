@@ -1,0 +1,16 @@
+<html>
+<head><title>LoopBack</title></head>
+<body>
+    <h1>LoopBack Rocks!</h1>
+    <p>Hello World... </p>
+</body>
+<script>
+// in a browser script
+var urlToChangeStream = '/api/CoffeeShops/change-stream';
+var src = new EventSource(urlToChangeStream);
+src.addEventListener('data', function(raw) {
+  var data = JSON.parse(raw);
+  console.log(data); // the change object
+});
+</script>
+</html>
