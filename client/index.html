@@ -4,13 +4,16 @@
     <h1>LoopBack Rocks!</h1>
     <p>Hello World... </p>
 </body>
+<pre>
 <script>
-// in a browser script
-var urlToChangeStream = '/api/CoffeeShops/change-stream';
+var urlToChangeStream = '/api/MyModels/change-stream?_format=event-stream';
 var src = new EventSource(urlToChangeStream);
-src.addEventListener('data', function(raw) {
-  var data = JSON.parse(raw);
-  console.log(data); // the change object
+src.addEventListener('data', function(msg) {
+ var data = JSON.parse(msg.data);
+ console.log(data); // the change object
 });
 </script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-live-set/angular-live-set.js"></script>
+</pre></body>
 </html>
